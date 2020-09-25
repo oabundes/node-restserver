@@ -1,4 +1,4 @@
-## Curso Node Aplicacion Restsetver
+## Curso Node Aplicacion Restserver
 
 
 Para instalar, en el directorio de la aplcación escribir
