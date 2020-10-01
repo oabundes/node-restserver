@@ -10,12 +10,6 @@ const usuario = require('../models/usuario');
 
 app.get('/usuario', verificaToken, (req, res) => {
 
-    return res.json({
-        usuario: req.usuario,
-        nombre: req.usuario.nombre,
-        email: req.usuario.email
-
-    })
 
     let desde = req.query.desde || 0;
     desde = Number(desde);
@@ -97,7 +91,7 @@ app.put('/usuario/:id', [verificaToken, verificaAdminRole], function(req, res) {
 
 
 
-    Usuario.findOneAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
+    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
 
         if (err) {
 
