@@ -6,7 +6,7 @@ const _ = require('underscore');
 const app = express();
 
 const { verificaToken, verificaAdminRole } = require('../middlewares/autenticacion');
-const usuario = require('../models/usuario');
+
 
 app.get('/usuario', verificaToken, (req, res) => {
 

@@ -148,8 +148,10 @@ app.post('/google', async(req, res) => {
             usuario.save((err, usuarioDB) => { // Se crea el usuario en la base de datos
 
                 if (err) {
-                    return res.status(500).json({
+
+                    res.status(500).json({
                         ok: false,
+                        message: "Ya valio....",
                         err
                     });
                 };

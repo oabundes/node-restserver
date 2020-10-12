@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-
-
+const Categoria = require('../models/categoria')
 
 //
 //Vrificar Token
@@ -52,9 +51,35 @@ let verificaAdminRole = (req, res, next) => {
     next();
 }
 
+let verificaCategoria = (req, res, next) => {
+
+    let descripcion = req.body.categoria;
+
+    Categoria.find({ descripcion: descripcion })
+        .exec((err, categoria) => {
+            if (err) {
+
+                return res.status(400).json({
+                    ok: false,
+                    err
+
+                });
+
+            }
+            // console.log(categoria[0]);
+            req.categoria = categoria[0];
+            next();
+
+
+        });
+}
+
+
+
 
 module.exports = {
 
     verificaToken,
-    verificaAdminRole
+    verificaAdminRole,
+    verificaCategoria
 }
